@@ -12,7 +12,8 @@ if gate == "p":
     key = input("key: ")
     # send the post request
     response = requests.post(
-        BASE + "def/%d" % int(key), {"username": username, "password": password}
+        BASE + "def/%d" % int(key), {"username": username,
+                                     "password": password}
     )
     print(response.json())
 elif gate == "g":
@@ -22,4 +23,12 @@ elif gate == "g":
 elif gate == "d":
     key = input("enter key")
     response = requests.delete(BASE + "def/%d" % int(key))
+    print(response.json())
+elif gate == "u":
+    # update the name of the user
+    key = input("enter key")
+    username = input("username: ")
+
+    response = requests.patch(BASE + "def/%d" %
+                              int(key), {"username": username})
     print(response.json())
